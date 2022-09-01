@@ -1,16 +1,13 @@
-import React from "react";
-import { Link } from "next/link";
 import styles from "./Home.module.css";
+import Link from "next/link";
 
-const Home = () => {
+export default function Home() {
   return (
     <div className={styles.container}>
       <h2>Welcome to Pizza Joint</h2>
-      <Link to="/base">
+      <Link href="/base">
         <button>Create Your Pizza</button>
       </Link>
     </div>
   );
-};
-
-export default Home;
+}

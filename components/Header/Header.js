@@ -4,7 +4,7 @@ import Image from "next/image";
 const LogoSVG = () => {
   return (
     <svg
-      className={styles.pizzaSvg}
+      // className={styles.pizzaSvg}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
     >
@@ -19,7 +19,7 @@ const LogoSVG = () => {
 const Header = () => {
   return (
     <header>
-      <div className={styles.logo}></div>
+      <div className={styles.logo}>{/* <LogoSVG /> */}</div>
       <div className={styles.title}>
         <h1>Pizza Joint</h1>
       </div>
