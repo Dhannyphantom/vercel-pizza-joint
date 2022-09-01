@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <h2>Welcome to Pizza Joint</h2>
+      <h2>Welcome to Vercel Pizza Joint</h2>
       <Link href="/base">
-        <button>Create Your Pizza</button>
+        <button className={styles.link}>Create Your Pizza</button>
       </Link>
     </div>
   );
