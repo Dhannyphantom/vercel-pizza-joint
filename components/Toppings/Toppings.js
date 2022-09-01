@@ -1,17 +1,17 @@
 import React from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 import styles from "./Toppings.module.css";
 
-const Toppings = ({ addTopping, pizza }) => {
-  let toppings = [
-    "mushrooms",
-    "peppers",
-    "onions",
-    "olives",
-    "extra cheese",
-    "tomatoes",
-  ];
+let toppings = [
+  "mushrooms",
+  "peppers",
+  "onions",
+  "olives",
+  "extra cheese",
+  "tomatoes",
+];
 
+const Toppings = ({ addTopping, pizza = { toppings: "mushrooms" } }) => {
   return (
     <div className={styles.container}>
       <h3>Step 2: Choose Toppings</h3>
@@ -26,8 +26,8 @@ const Toppings = ({ addTopping, pizza }) => {
         })}
       </ul>
 
-      <Link to="/order">
-        <button>Order</button>
+      <Link href="/order">
+        <button className={styles.orderBtn}>Order</button>
       </Link>
     </div>
   );
