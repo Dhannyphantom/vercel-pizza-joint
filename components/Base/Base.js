@@ -1,10 +1,9 @@
-import React from "react";
-import { Link } from "next/link";
+import Link from "next/link";
 import styles from "./Base.module.css";
 
-const Base = ({ addBase, pizza }) => {
-  const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
+const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
+const Base = ({ addBase, pizza = { base: "Classic" } }) => {
   return (
     <div className={styles.container}>
       <h3>Step 1: Choose Your Base</h3>
@@ -21,7 +20,7 @@ const Base = ({ addBase, pizza }) => {
 
       {pizza.base && (
         <div className={styles.next}>
-          <Link to="/toppings">
+          <Link href="/toppings">
             <button>Next</button>
           </Link>
         </div>
