@@ -1,5 +1,27 @@
-.container > h3 {
-  margin-bottom: 20px;
+.container {
+  max-width: 300px;
+}
+.container h3 {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.container li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* lists */
+li span.active {
+  font-weight: bold;
+}
+li span.active::before {
+  content: ">";
+  position: relative;
+  top: -2px;
+  margin-right: 6px;
+  transform: scale(0.8, 1);
+  display: inline-block;
 }
 
 .orderBtn {

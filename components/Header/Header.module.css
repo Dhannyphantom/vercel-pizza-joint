@@ -9,6 +9,6 @@
 
 .underline {
   width: calc(100vw - 100px);
-  border-bottom: 1px solid #d1d1d1;
+  border-bottom: 1px solid #939393;
   align-self: center;
 }

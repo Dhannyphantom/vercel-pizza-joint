@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import Link from "next/link";
 
 export default function Home() {
-  const [pizza, setPizza] = useState([]);
+  const [pizza, setPizza] = useState({ base: "", toppings: [] });
 
   return (
     <div className={styles.container}>
@@ -11,7 +11,7 @@ export default function Home() {
       <Link
         href={{
           pathname: "/base",
-          query: pizza,
+          query: JSON.stringify(pizza),
         }}
       >
         <button className={styles.link}>Create Your Pizza</button>

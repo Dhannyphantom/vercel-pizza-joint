@@ -1,9 +1,12 @@
 import Link from "next/link";
 import styles from "./Base.module.css";
+import { useRouter } from "next/router";
 
 const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
 const Base = ({ addBase, pizza = { base: "Classic" } }) => {
+  const router = useRouter();
+  console.log(router.query);
   return (
     <div className={styles.container}>
       <h3>Step 1: Choose Your Base</h3>
