@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  margin: 0px 20px;
+}
+
+.underline {
+  width: calc(100vw - 100px);
+  border-bottom: 1px solid #d1d1d1;
+  align-self: center;
+}
