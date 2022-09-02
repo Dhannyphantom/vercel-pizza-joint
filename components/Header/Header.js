@@ -1,4 +1,5 @@
 import styles from "./Header.module.css";
+import { motion } from "framer-motion";
 
 const LogoSVG = () => {
   return (
@@ -16,15 +17,17 @@ const LogoSVG = () => {
     </svg>
   );
 };
-const Header = () => {
+export default function Header() {
   return (
-    <header className={styles.header}>
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={styles.header}
+    >
       <div className={styles.logo}>
         <LogoSVG />
       </div>
       <div className={styles.underline} />
-    </header>
+    </motion.header>
   );
-};
-
-export default Header;
+}
