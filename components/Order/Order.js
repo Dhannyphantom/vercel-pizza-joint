@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./Order.module.css";
+import { useSelector } from "react-redux";
 
-const Order = ({ pizza = { base: "Classic", toppings: [] } }) => {
+const Order = () => {
+  const pizza = useSelector((state) => state.pizza);
   return (
     <div className={styles.container}>
       <h2>Thank you for your order :)</h2>

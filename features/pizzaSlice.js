@@ -12,7 +12,7 @@ const pizzaSlice = createSlice({
     addBase: (state, action) => {
       state.base = action.payload;
     },
-    addToppings: (state, action) => {
+    addTopping: (state, action) => {
       const check = state.toppings.find((str) => str === action.payload);
       if (check) {
         state.toppings = state.toppings.filter((str) => str !== check);
@@ -23,5 +23,5 @@ const pizzaSlice = createSlice({
   },
 });
 
-export const { addBase, addToppings } = pizzaSlice.actions;
+export const { addBase, addTopping } = pizzaSlice.actions;
 export default pizzaSlice.reducer;
