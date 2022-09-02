@@ -1,11 +1,8 @@
-import { useState } from "react";
 import styles from "./Home.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function Home() {
-  const [pizza, setPizza] = useState({ base: "", toppings: [] });
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
