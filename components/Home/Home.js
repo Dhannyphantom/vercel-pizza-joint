@@ -1,21 +1,23 @@
 import { useState } from "react";
 import styles from "./Home.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [pizza, setPizza] = useState({ base: "", toppings: [] });
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.container}
+    >
       <h2>Welcome to Vercel Pizza Joint</h2>
-      <Link
-        href={{
-          pathname: "/base",
-          query: JSON.stringify(pizza),
-        }}
-      >
-        <button className={styles.link}>Create Your Pizza</button>
+      <Link href="/base">
+        <motion.button animate={{ scale: 1.5, y: 20 }} className={styles.link}>
+          Create Your Pizza
+        </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 }
