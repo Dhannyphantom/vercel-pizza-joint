@@ -22,6 +22,7 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      transition={{ delay: 0.3, type: "spring", stiffness: 125 }}
       className={styles.header}
     >
       <div className={styles.logo}>

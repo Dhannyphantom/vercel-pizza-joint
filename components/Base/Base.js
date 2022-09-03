@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Base.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addBase } from "../../features/pizzaSlice";
+import { motion } from "framer-motion";
 
 const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
@@ -10,7 +11,12 @@ const Base = ({}) => {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      initial={{ x: "100vw", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ type: "spring", delay: 0.4 }}
+      className={styles.container}
+    >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
         {bases.map((base) => {
@@ -24,13 +30,18 @@ const Base = ({}) => {
       </ul>
 
       {pizza.base && (
-        <div className={styles.next}>
+        <motion.div
+          initial={{ x: "-100vw" }}
+          transition={{ type: "spring", stiffness: 120 }}
+          animate={{ x: 0 }}
+          className={styles.next}
+        >
           <Link href="/toppings">
             <button>Next</button>
           </Link>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

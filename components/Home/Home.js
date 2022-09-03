@@ -7,6 +7,7 @@ export default function Home() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 1 }}
       className={styles.container}
     >
       <h2>Welcome to Vercel Pizza Joint</h2>
