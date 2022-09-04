@@ -20,8 +20,11 @@ const pizzaSlice = createSlice({
         state.toppings.push(action.payload);
       }
     },
+    reset() {
+      return initialState;
+    },
   },
 });
 
-export const { addBase, addTopping } = pizzaSlice.actions;
+export const { addBase, addTopping, reset } = pizzaSlice.actions;
 export default pizzaSlice.reducer;

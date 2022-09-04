@@ -12,7 +12,15 @@ export default function Home() {
     >
       <h2>Welcome to Vercel Pizza Joint</h2>
       <Link href="/base">
-        <motion.button animate={{ scale: 1.5, y: 20 }} className={styles.link}>
+        <motion.button
+          animate={{ y: 20 }}
+          whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+          className={styles.link}
+        >
           Create Your Pizza
         </motion.button>
       </Link>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./Toppings.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addTopping } from "../../features/pizzaSlice";
+import { motion } from "framer-motion";
 
 let toppings = [
   "mushrooms",
@@ -23,16 +24,37 @@ const Toppings = () => {
         {toppings.map((topping) => {
           let spanClass = pizza.toppings.includes(topping) ? styles.active : "";
           return (
-            <li key={topping} onClick={() => dispatch(addTopping(topping))}>
+            <motion.li
+              whileHover={{
+                scale: 1.2,
+                color: "#f8e112",
+                originX: 0,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+              }}
+              key={topping}
+              onClick={() => dispatch(addTopping(topping))}
+            >
               <span className={spanClass}>{topping}</span>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
 
       {pizza.toppings[0] && (
         <Link href="/order">
-          <button className={styles.orderBtn}>Order</button>
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              textShadow: "0px 0px 8px rgb(255,255,255)",
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+            className={styles.orderBtn}
+          >
+            Order
+          </motion.button>
         </Link>
       )}
     </div>
