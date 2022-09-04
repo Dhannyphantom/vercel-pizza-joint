@@ -26,6 +26,18 @@ const containerVariants = {
   },
 };
 
+const btnVariants = {
+  to: {
+    y: 30,
+  },
+  hover: {
+    scale: 1.12,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: { duration: 0.4, yoyo: Infinity },
+  },
+};
+
 const Toppings = () => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
@@ -63,11 +75,8 @@ const Toppings = () => {
       {pizza.toppings[0] && (
         <Link href="/order">
           <motion.button
-            whileHover={{
-              scale: 1.1,
-              textShadow: "0px 0px 8px rgb(255,255,255)",
-              boxShadow: "0px 0px 8px rgb(255,255,255)",
-            }}
+            variants={btnVariants}
+            whileHover="hover"
             className={styles.orderBtn}
           >
             Order

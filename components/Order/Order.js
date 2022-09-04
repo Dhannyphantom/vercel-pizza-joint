@@ -43,9 +43,10 @@ const homeBtnVariants = {
     opacity: 1,
   },
   hover: {
-    scale: 1.2,
+    scale: 1.12,
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: { duration: 0.4, yoyo: Infinity },
   },
 };
 

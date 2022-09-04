@@ -2,6 +2,18 @@ import styles from "./Home.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+const btnVariants = {
+  to: {
+    y: 30,
+  },
+  hover: {
+    scale: 1.12,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: { duration: 0.4, yoyo: Infinity },
+  },
+};
+
 export default function Home() {
   return (
     <motion.div
@@ -13,12 +25,9 @@ export default function Home() {
       <h2>Welcome to Vercel Pizza Joint</h2>
       <Link href="/base">
         <motion.button
-          animate={{ y: 20 }}
-          whileHover={{
-            scale: 1.1,
-            textShadow: "0px 0px 8px rgb(255,255,255)",
-            boxShadow: "0px 0px 8px rgb(255,255,255)",
-          }}
+          variants={btnVariants}
+          animate="to"
+          whileHover="hover"
           className={styles.link}
         >
           Create Your Pizza

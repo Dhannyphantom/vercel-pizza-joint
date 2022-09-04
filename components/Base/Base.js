@@ -28,6 +28,18 @@ const btnContainerVariants = {
   },
 };
 
+const btnVariants = {
+  to: {
+    y: 30,
+  },
+  hover: {
+    scale: 1.12,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: { duration: 0.4, yoyo: Infinity },
+  },
+};
+
 const Base = ({}) => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
@@ -66,13 +78,7 @@ const Base = ({}) => {
       {pizza.base && (
         <motion.div variants={btnContainerVariants} className={styles.next}>
           <Link href="/toppings">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 8px rgb(255,255,255)",
-                boxShadow: "0px 0px 8px rgb(255,255,255)",
-              }}
-            >
+            <motion.button variants={btnVariants} whileHover="hover">
               Next
             </motion.button>
           </Link>
