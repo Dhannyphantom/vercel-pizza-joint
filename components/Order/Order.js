@@ -5,32 +5,81 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { reset } from "../../features/pizzaSlice";
 
+const containerVariants = {
+  from: {
+    opactity: 0,
+    x: "100vw",
+  },
+  to: {
+    x: 0,
+    opacity: 1,
+
+    transition: {
+      type: "spring",
+      mass: 0.4,
+      damping: 20,
+      when: "beforeChildren",
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const childVariants = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+  },
+};
+
+const homeBtnVariants = {
+  from: {
+    y: 0,
+    opacity: 0,
+  },
+  to: {
+    y: 30,
+    opacity: 1,
+  },
+  hover: {
+    scale: 1.2,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+  },
+};
+
 const Order = () => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={containerVariants}
+      initial="from"
+      animate="to"
+      whileHover="hover"
+      className={styles.container}
+    >
       <h2>Thank you for your order :)</h2>
-      <p>You ordered a {pizza.base} pizza with:</p>
-      {pizza.toppings.map((topping) => (
-        <div className={styles.topping} key={topping}>
-          {topping}
-        </div>
-      ))}
+      <motion.p variants={childVariants}>
+        You ordered a {pizza.base} pizza with:
+      </motion.p>
+      <motion.div variants={childVariants}>
+        {pizza.toppings.map((topping) => (
+          <div className={styles.topping} key={topping}>
+            &bull; {topping}
+          </div>
+        ))}
+      </motion.div>
       <Link href="/">
         <motion.button
-          animate={{ y: 20 }}
-          whileHover={{
-            scale: 1.2,
-            textShadow: "0px 0px 8px rgb(255,255,255)",
-            boxShadow: "0px 0px 8px rgb(255,255,255)",
-          }}
+          variants={homeBtnVariants}
           onClick={() => dispatch(reset())}
         >
           Home
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

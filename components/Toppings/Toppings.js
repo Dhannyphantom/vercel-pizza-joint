@@ -14,11 +14,28 @@ let toppings = [
   "tomatoes",
 ];
 
+const containerVariants = {
+  from: {
+    opactity: 0,
+    x: "100vw",
+  },
+  to: {
+    x: 0,
+    opacity: 1,
+    transition: { type: "spring", delay: 0.4 },
+  },
+};
+
 const Toppings = () => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={containerVariants}
+      initial="from"
+      animate="to"
+      className={styles.container}
+    >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map((topping) => {
@@ -57,7 +74,7 @@ const Toppings = () => {
           </motion.button>
         </Link>
       )}
-    </div>
+    </motion.div>
   );
 };
 
