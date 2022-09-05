@@ -1,12 +1,13 @@
 import Header from "../Header/Header";
 import styles from "./Layout.module.css";
 
-import { motion } from "framer-motion";
+import Modal from "../Modal/Modal";
 
 export default function Layout({ children }) {
   return (
     <main className={styles.main}>
       <Header />
+      <Modal />
       <section className={styles.section}>{children}</section>
     </main>
   );

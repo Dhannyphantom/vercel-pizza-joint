@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   base: "",
   toppings: [],
+  modal: false,
 };
 
 const pizzaSlice = createSlice({
@@ -23,8 +24,11 @@ const pizzaSlice = createSlice({
     reset() {
       return initialState;
     },
+    setModal(state, action) {
+      state.modal = action.payload;
+    },
   },
 });
 
-export const { addBase, addTopping, reset } = pizzaSlice.actions;
+export const { addBase, addTopping, setModal, reset } = pizzaSlice.actions;
 export default pizzaSlice.reducer;

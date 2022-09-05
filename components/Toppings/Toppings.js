@@ -84,6 +84,7 @@ const Toppings = () => {
           <Link href="/order">
             <motion.button
               variants={btnVariants}
+              exit="exit"
               whileHover="hover"
               className={styles.orderBtn}
             >

@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./Order.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { reset } from "../../features/pizzaSlice";
+import { setModal } from "../../features/pizzaSlice";
 
 const containerVariants = {
   from: {
@@ -34,27 +33,15 @@ const childVariants = {
   },
 };
 
-const homeBtnVariants = {
-  from: {
-    y: 0,
-    opacity: 0,
-  },
-  to: {
-    y: 30,
-    opacity: 1,
-    transition: { type: "spring", stiffness: 300 },
-  },
-  hover: {
-    scale: 1.12,
-    textShadow: "0px 0px 8px rgb(255,255,255)",
-    boxShadow: "0px 0px 8px rgb(255,255,255)",
-    transition: { duration: 0.4, yoyo: Infinity },
-  },
-};
-
 const Order = () => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
+
+  const onShowModal = () => {
+    setTimeout(() => {
+      dispatch(setModal(true));
+    }, 2000);
+  };
 
   return (
     <motion.div
@@ -70,21 +57,13 @@ const Order = () => {
       <motion.p variants={childVariants}>
         You ordered a {pizza.base} pizza with:
       </motion.p>
-      <motion.div variants={childVariants}>
+      <motion.div onAnimationComplete={onShowModal} variants={childVariants}>
         {pizza.toppings.map((topping) => (
           <div className={styles.topping} key={topping}>
             &bull; {topping}
           </div>
         ))}
       </motion.div>
-      <Link href="/">
-        <motion.button
-          variants={homeBtnVariants}
-          onClick={() => dispatch(reset())}
-        >
-          Home
-        </motion.button>
-      </Link>
     </motion.div>
   );
 };
