@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Modal.module.css";
 import Link from "next/link";
-import { reset } from "../../features/pizzaSlice";
+import { reset, setModal } from "../../features/pizzaSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const backdrop = {
@@ -33,7 +33,10 @@ export default function Modal() {
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.pizza.modal);
 
-  console.log({ showModal });
+  const onStartAgain = () => {
+    dispatch(reset());
+    // dispatch(setModal(false));
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -48,7 +51,7 @@ export default function Modal() {
           <motion.div variants={modal} className={styles.content}>
             <h4>Do you want to order another pizza?</h4>
             <Link href="/">
-              <button>Start Again</button>
+              <button onClick={onStartAgain}>Start Again</button>
             </Link>
           </motion.div>
         </motion.div>
