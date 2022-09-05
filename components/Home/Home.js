@@ -1,6 +1,7 @@
 import styles from "./Home.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Loader from "../Loader/Loader";
 
 const btnVariants = {
   to: {
@@ -10,7 +11,7 @@ const btnVariants = {
     scale: 1.12,
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
-    transition: { duration: 0.4, yoyo: Infinity },
+    transition: { duration: 0.35, repeat: Infinity, repeatType: "reverse" },
   },
 };
 
@@ -44,6 +45,8 @@ export default function Home() {
           Create Your Pizza
         </motion.button>
       </Link>
+
+      <Loader />
     </motion.div>
   );
 }
