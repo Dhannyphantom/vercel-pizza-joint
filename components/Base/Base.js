@@ -16,6 +16,7 @@ const containerVariants = {
     opacity: 1,
     transition: { type: "spring", delay: 0.4 },
   },
+  exit: { x: "-100vw", transition: { ease: "easeInOut" } },
 };
 
 const btnContainerVariants = {
@@ -49,6 +50,7 @@ const Base = ({}) => {
       variants={containerVariants}
       initial="from"
       animate="to"
+      exit="exit"
       className={styles.container}
     >
       <h3>Step 1: Choose Your Base</h3>

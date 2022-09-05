@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styles from "./Order.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
@@ -22,6 +22,7 @@ const containerVariants = {
       staggerChildren: 0.5,
     },
   },
+  exit: { x: "-100vw", transition: { ease: "easeInOut" } },
 };
 
 const childVariants = {
@@ -41,6 +42,7 @@ const homeBtnVariants = {
   to: {
     y: 30,
     opacity: 1,
+    transition: { type: "spring", stiffness: 300 },
   },
   hover: {
     scale: 1.12,
@@ -53,15 +55,18 @@ const homeBtnVariants = {
 const Order = () => {
   const pizza = useSelector((state) => state.pizza);
   const dispatch = useDispatch();
+
   return (
     <motion.div
       variants={containerVariants}
       initial="from"
-      animate="to"
       whileHover="hover"
+      exit="exit"
+      animate="to"
       className={styles.container}
     >
       <h2>Thank you for your order :)</h2>
+
       <motion.p variants={childVariants}>
         You ordered a {pizza.base} pizza with:
       </motion.p>

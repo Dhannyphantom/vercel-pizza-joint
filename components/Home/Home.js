@@ -14,19 +14,30 @@ const btnVariants = {
   },
 };
 
+const containerVariants = {
+  from: {
+    opacity: 0,
+  },
+  to: {
+    opacity: 1,
+    transition: { duration: 1.5, delay: 1 },
+  },
+  exit: { x: "-100vw", transition: { ease: "easeInOut" } },
+};
+
 export default function Home() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.5, delay: 1 }}
+      variants={containerVariants}
+      initial="from"
+      animate="to"
+      exit="exit"
       className={styles.container}
     >
       <h2>Welcome to Vercel Pizza Joint</h2>
       <Link href="/base">
         <motion.button
           variants={btnVariants}
-          animate="to"
           whileHover="hover"
           className={styles.link}
         >

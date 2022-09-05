@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./Toppings.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { addTopping } from "../../features/pizzaSlice";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 let toppings = [
   "mushrooms",
@@ -24,11 +24,17 @@ const containerVariants = {
     opacity: 1,
     transition: { type: "spring", delay: 0.4 },
   },
+  exit: { x: "-100vw", transition: { ease: "easeInOut" } },
 };
 
 const btnVariants = {
+  from: {
+    x: "-100vw",
+    y: 0,
+  },
   to: {
-    y: 30,
+    x: 0,
+    y: 20,
   },
   hover: {
     scale: 1.12,
@@ -36,6 +42,7 @@ const btnVariants = {
     boxShadow: "0px 0px 8px rgb(255,255,255)",
     transition: { duration: 0.4, yoyo: Infinity },
   },
+  exit: { y: -15, opacity: 0 },
 };
 
 const Toppings = () => {
@@ -46,6 +53,7 @@ const Toppings = () => {
       variants={containerVariants}
       initial="from"
       animate="to"
+      exit="exit"
       className={styles.container}
     >
       <h3>Step 2: Choose Toppings</h3>
@@ -71,18 +79,19 @@ const Toppings = () => {
           );
         })}
       </ul>
-
-      {pizza.toppings[0] && (
-        <Link href="/order">
-          <motion.button
-            variants={btnVariants}
-            whileHover="hover"
-            className={styles.orderBtn}
-          >
-            Order
-          </motion.button>
-        </Link>
-      )}
+      <AnimatePresence>
+        {pizza.toppings[0] && (
+          <Link href="/order">
+            <motion.button
+              variants={btnVariants}
+              whileHover="hover"
+              className={styles.orderBtn}
+            >
+              Order
+            </motion.button>
+          </Link>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
