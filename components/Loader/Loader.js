@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useCycle } from "framer-motion";
 import styles from "./Loader.module.css";
 
 const loaderVar = {
@@ -25,10 +25,30 @@ const loaderVar = {
       },
     },
   },
+  to_2: {
+    y: [20, -20],
+    x: 0,
+    transition: {
+      y: {
+        repeat: Infinity,
+        repeatType: "reverse",
+        duration: 0.25,
+        ease: "easeOut",
+      },
+    },
+  },
 };
 
 export default function Loader() {
+  const [animation, cycleAnimation] = useCycle("to", "to_2");
   return (
-    <motion.div variants={loaderVar} animate="to" className={styles.loader} />
+    <>
+      <motion.div
+        variants={loaderVar}
+        animate={animation}
+        className={styles.loader}
+      />
+      <div onClick={() => cycleAnimation()}>Cycle Loader</div>
+    </>
   );
 }
