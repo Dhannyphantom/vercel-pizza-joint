@@ -54,9 +54,14 @@ export default function Header() {
       transition={{ delay: 0.3, type: "spring", stiffness: 125 }}
       className={styles.header}
     >
-      <div className={styles.logo}>
+      <motion.div
+        drag
+        dragConstraints={{ top: 0, right: 0, left: 0, bottom: 0 }}
+        dragElastic={1}
+        className={styles.logo}
+      >
         <LogoSVG />
-      </div>
+      </motion.div>
       <div className={styles.underline} />
     </motion.header>
   );
